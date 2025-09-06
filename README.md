@@ -4,6 +4,23 @@
 
 Cross‑chain **decimal & units** primitives built on **BigInt**. Safely convert between 2/6/7/9/18 decimals, apply slippage, format values without floating point, and normalize assets via a tiny registry. Thin chain adapters included.
 
+## ⚠️ Disclaimer
+
+**Use at your own risk.** This library is provided **“AS IS”**, without warranties of any kind, express or implied, including but not limited to merchantability, fitness for a particular purpose, non-infringement, or error-free operation.
+
+- **No custody / no funds:** this is a developer library. It does **not** custody assets, manage keys, or execute transactions on your behalf. You are fully responsible for how you integrate and use it.
+- **No financial advice:** nothing in this repository constitutes investment, trading, or legal advice.
+- **Precision & conversions:** blockchain tokens and FIAT currencies use different decimal schemes. **Always validate decimals for each asset/network** and test on a sandbox/testnet before mainnet usage. Mistakes in scaling/rounding can cause permanent loss of funds.
+- **Security:** review the code, pin dependencies, and consider external audits before production use.
+- **Compliance:** you are responsible for complying with all applicable laws and regulations in your jurisdiction.
+- **Limitation of liability:** to the maximum extent permitted by law, the authors/maintainers shall **not be liable** for any direct, indirect, incidental, special, exemplary, or consequential damages (including loss of funds) arising from the use of this software.
+
+See [LICENSE](./LICENSE) for the full terms.
+
+**TL;DR:** this is low-level money math; double-check decimals, rounding, and chain adapters; test on testnets; you assume all risk.
+
+---
+
 > **Design goals:** correctness first, chain‑neutral, minimal dependencies, pure integer math.
 
 ---
