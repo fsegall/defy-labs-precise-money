@@ -3,10 +3,10 @@
     "private": true,
     "packageManager": "pnpm@9.0.0",
     "scripts": {
-      "build": "pnpm -r --filter ./packages/precise-money... build",
-      "test": "pnpm -r --filter ./packages/precise-money... test",
-      "lint": "pnpm -r lint",
-      "release:dry": "pnpm -r --filter ./packages/precise-money... build && echo 'ready to publish'"
-    }
-  }
-  
+        "build": "pnpm -r --filter ./packages/precise-money... build",
+        "test": "pnpm -r --filter ./packages/precise-money... test",
+        "lint": "pnpm -r lint",
+        "release:dry": "pnpm -r --filter ./packages/precise-money... build && echo 'ready to publish'"
+    },
+    "version": "0.0.1"
+}
