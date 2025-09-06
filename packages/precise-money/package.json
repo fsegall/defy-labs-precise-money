@@ -9,23 +9,32 @@
     "types": "dist/index.d.ts",
     "files": ["dist"],
     "exports": {
-        ".": {
-            "default": "./dist/index.js",
-            "types": "./dist/index.d.ts"
-        },
-        "./adapters/*": "./dist/adapters/*.js"
+      ".": {
+        "types": "./dist/index.d.ts",
+        "import": "./dist/index.js",
+        "default": "./dist/index.js"
+      },
+      "./adapters/*": {
+        "types": "./dist/adapters/*.d.ts",
+        "import": "./dist/adapters/*.js",
+        "default": "./dist/adapters/*.js"
+      }
     },
-    "scripts": {
-        "build": "tsup src/index.ts --format esm --dts",
-        "test": "vitest run",
-        "clean": "rimraf dist",
-        "prepublishOnly": "pnpm build"
+    "publishConfig": { "access": "public" },
+    "repository": "github:defy-labs-precise-money",
+    "engines": { "node": ">=18" },
+     "scripts": {
+      "build": "tsup src/index.ts src/adapters/*.ts --format esm --dts",
+      "test": "vitest run",
+      "clean": "rimraf dist",
+      "prepublishOnly": "pnpm build"
     },
     "devDependencies": {
-        "@types/node": "^24.3.1",
-        "rimraf": "^6.0.0",
-        "tsup": "^8.1.0",
-        "typescript": "^5.4.0",
-        "vitest": "^1.6.0"
+      "@types/node": "^24.3.1",
+      "rimraf": "^6.0.0",
+      "tsup": "^8.1.0",
+      "typescript": "^5.4.0",
+      "vitest": "^1.6.0"
     }
-}
+  }
+  
