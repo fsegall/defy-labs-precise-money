@@ -1,46 +1,44 @@
 {
-    "name": "@defy-labs/precise-money",
-    "version": "0.1.0",
-    "description": "Cross-chain decimal & units primitives for crypto/fiat with BigInt.",
-    "license": "MIT",
-    "type": "module",
-    "sideEffects": false,
-    "main": "dist/index.js",
-    "types": "dist/index.d.ts",
-    "files": ["dist"],
-    "exports": {
-      ".": {
-        "types": "./dist/index.d.ts",
-        "import": "./dist/index.js",
-        "default": "./dist/index.js"
-      },
-      "./adapters/*": {
-        "types": "./dist/adapters/*.d.ts",
-        "import": "./dist/adapters/*.js",
-        "default": "./dist/adapters/*.js"
-      }
+  "name": "precise-money",
+  "version": "0.1.0",
+  "description": "Cross-chain decimal & units primitives for crypto/fiat with BigInt.",
+  "license": "MIT",
+  "type": "module",
+  "sideEffects": false,
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": ["dist"],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "default": "./dist/index.js"
     },
-    "repository": {
-      "type": "git",
-      "url": "git+https://github.com/fsegall/defy-labs-precise-money.git",
-      "directory": "packages/precise-money"
-    },
-    "bugs": { "url": "https://github.com/fsegall/defy-labs-precise-money/issues" },
-    "homepage": "https://github.com/fsegall/defy-labs-precise-money#readme",
-    "publishConfig": { "access": "public" },
-        "engines": { "node": ">=18" },
-     "scripts": {
-      "build": "tsup src/index.ts src/adapters/*.ts --format esm --dts",
-      "test": "vitest run",
-      "clean": "rimraf dist",
-      "prepublishOnly": "pnpm build"
-    },
-    "devDependencies": {
-      "@types/node": "^24.3.1",
-      "rimraf": "^6.0.0",
-      "tsup": "^8.1.0",
-      "typescript": "^5.4.0",
-      "vitest": "^1.6.0"
+    "./adapters/*": {
+      "types": "./dist/adapters/*.d.ts",
+      "import": "./dist/adapters/*.js",
+      "default": "./dist/adapters/*.js"
     }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fsegall/defy-labs-precise-money.git",
+    "directory": "packages/precise-money"
+  },
+  "bugs": { "url": "https://github.com/fsegall/defy-labs-precise-money/issues" },
+  "homepage": "https://github.com/fsegall/defy-labs-precise-money#readme",
+  "publishConfig": { "access": "public" },
+  "scripts": {
+    "build": "tsup src/index.ts src/adapters/*.ts --format esm --dts",
+    "test": "vitest run",
+    "clean": "rimraf dist",
+    "prepublishOnly": "pnpm build"
+  },
+  "devDependencies": {
+    "@types/node": "^24.3.1",
+    "rimraf": "^6.0.0",
+    "tsup": "^8.1.0",
+    "typescript": "^5.4.0",
+    "vitest": "^1.6.0"
   }
-  
+}
