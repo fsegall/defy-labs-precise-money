@@ -1,0 +1,31 @@
+{
+    "name": "@defy-labs/precise-money",
+    "version": "0.1.0",
+    "description": "Cross-chain decimal & units primitives for crypto/fiat with BigInt.",
+    "license": "MIT",
+    "type": "module",
+    "sideEffects": false,
+    "main": "dist/index.js",
+    "types": "dist/index.d.ts",
+    "files": ["dist"],
+    "exports": {
+        ".": {
+            "default": "./dist/index.js",
+            "types": "./dist/index.d.ts"
+        },
+        "./adapters/*": "./dist/adapters/*.js"
+    },
+    "scripts": {
+        "build": "tsup src/index.ts --format esm --dts",
+        "test": "vitest run",
+        "clean": "rimraf dist",
+        "prepublishOnly": "pnpm build"
+    },
+    "devDependencies": {
+        "@types/node": "^24.3.1",
+        "rimraf": "^6.0.0",
+        "tsup": "^8.1.0",
+        "typescript": "^5.4.0",
+        "vitest": "^1.6.0"
+    }
+}

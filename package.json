@@ -1,0 +1,12 @@
+{
+    "name": "precise-money-monorepo",
+    "private": true,
+    "packageManager": "pnpm@9.0.0",
+    "scripts": {
+      "build": "pnpm -r --filter ./packages/precise-money... build",
+      "test": "pnpm -r --filter ./packages/precise-money... test",
+      "lint": "pnpm -r lint",
+      "release:dry": "pnpm -r --filter ./packages/precise-money... build && echo 'ready to publish'"
+    }
+  }
+  
