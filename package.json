@@ -6,7 +6,8 @@
         "build": "pnpm -r --filter ./packages/precise-money... build",
         "test": "pnpm -r --filter ./packages/precise-money... test",
         "lint": "pnpm -r lint",
-        "release:dry": "pnpm -r --filter ./packages/precise-money... build && echo 'ready to publish'"
+        "release:dry": "pnpm -r --filter ./packages/precise-money... build && echo 'ready to publish'",
+        "release": "npm --workspace packages/precise-money publish --access public"
     },
     "version": "0.0.1"
 }

@@ -1,13 +1,15 @@
 {
   "name": "precise-money",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Cross-chain decimal & units primitives for crypto/fiat with BigInt.",
   "license": "MIT",
   "type": "module",
   "sideEffects": false,
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
@@ -25,11 +27,26 @@
     "url": "git+https://github.com/fsegall/defy-labs-precise-money.git",
     "directory": "packages/precise-money"
   },
-  "bugs": { "url": "https://github.com/fsegall/defy-labs-precise-money/issues" },
+  "bugs": {
+    "url": "https://github.com/fsegall/defy-labs-precise-money/issues"
+  },
   "homepage": "https://github.com/fsegall/defy-labs-precise-money#readme",
-  "publishConfig": { "access": "public" },
-  "keywords": ["bigint","decimals","crypto","fiat","cross-chain","units","money","precision"],
-  "engines": { "node": ">=18" },
+  "publishConfig": {
+    "access": "public"
+  },
+  "keywords": [
+    "bigint",
+    "decimals",
+    "crypto",
+    "fiat",
+    "cross-chain",
+    "units",
+    "money",
+    "precision"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
   "scripts": {
     "build": "tsup src/index.ts src/adapters/*.ts --format esm --dts",
     "test": "vitest run",
