@@ -28,6 +28,8 @@
   "bugs": { "url": "https://github.com/fsegall/defy-labs-precise-money/issues" },
   "homepage": "https://github.com/fsegall/defy-labs-precise-money#readme",
   "publishConfig": { "access": "public" },
+  "keywords": ["bigint","decimals","crypto","fiat","cross-chain","units","money","precision"],
+  "engines": { "node": ">=18" },
   "scripts": {
     "build": "tsup src/index.ts src/adapters/*.ts --format esm --dts",
     "test": "vitest run",
