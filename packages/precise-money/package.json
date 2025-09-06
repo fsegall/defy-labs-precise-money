@@ -20,9 +20,15 @@
         "default": "./dist/adapters/*.js"
       }
     },
+    "repository": {
+      "type": "git",
+      "url": "git+https://github.com/fsegall/defy-labs-precise-money.git",
+      "directory": "packages/precise-money"
+    },
+    "bugs": { "url": "https://github.com/fsegall/defy-labs-precise-money/issues" },
+    "homepage": "https://github.com/fsegall/defy-labs-precise-money#readme",
     "publishConfig": { "access": "public" },
-    "repository": "github:defy-labs-precise-money",
-    "engines": { "node": ">=18" },
+        "engines": { "node": ">=18" },
      "scripts": {
       "build": "tsup src/index.ts src/adapters/*.ts --format esm --dts",
       "test": "vitest run",
