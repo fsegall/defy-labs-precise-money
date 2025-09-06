@@ -21,9 +21,18 @@ Cross‑chain **decimal & units** primitives built on **BigInt**. Safely convert
 ## Install
 
 ```bash
-pnpm add @defy-labs/precise-money
+pnpm add precise-money
 # or
-npm i @defy-labs/precise-money
+npm i precise-money
+
+npm i precise-money
+```
+
+```ts
+import { toMinor, fromMinor } from 'precise-money';
+import { evmEnsureDecimals } from 'precise-money/adapters/evm';
+
+console.log(fromMinor(123n, 2)); // "1.23"
 ```
 
 TypeScript: target ES2020 or newer.
