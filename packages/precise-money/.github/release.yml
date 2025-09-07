@@ -1,14 +1,10 @@
+# .github/workflows/release.yml (no repo da lib)
 name: release
-on:
-  push:
-    tags: ['v*.*.*']
-
+on: { push: { tags: ['v*.*.*'] } }
 jobs:
   publish:
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      id-token: write   # necessário para --provenance
+    permissions: { contents: read, id-token: write }
     steps:
       - uses: actions/checkout@v4
       - uses: pnpm/action-setup@v3
@@ -20,7 +16,8 @@ jobs:
           cache: 'pnpm'
       - run: pnpm install --frozen-lockfile
       - run: pnpm -r --filter ./packages/precise-money... build
-      - name: Publish package
+      - run: pnpm -r --filter ./packages/precise-money... test
+      - name: Publish to npm
         working-directory: packages/precise-money
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
