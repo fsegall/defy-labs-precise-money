@@ -1,6 +1,6 @@
 {
   "name": "precise-money",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "description": "Cross-chain decimal & units primitives for crypto/fiat with BigInt.",
   "license": "MIT",
   "type": "module",
@@ -8,7 +8,10 @@
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [
-    "dist"
+    "dist",
+    "README.md",
+    "LICENSE",
+    "GOLDEN_RULES_FOR_MONEY_AND_PRECISION.md"
   ],
   "exports": {
     ".": {
