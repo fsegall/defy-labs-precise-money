@@ -45,8 +45,6 @@ See [LICENSE](./LICENSE) for the full terms.
 pnpm add precise-money
 # or
 npm i precise-money
-
-npm i precise-money
 ```
 
 ```ts
