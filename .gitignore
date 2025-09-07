@@ -1,7 +1,6 @@
 # .gitignore
 node_modules
 dist
-pnpm-lock.yaml
 coverage
 *.log
 .DS_Store
