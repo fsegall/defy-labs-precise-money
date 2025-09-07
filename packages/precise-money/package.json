@@ -11,7 +11,9 @@
     "dist",
     "README.md",
     "LICENSE",
-    "GOLDEN_RULES_FOR_MONEY_AND_PRECISION.md"
+    "GOLDEN_RULES_FOR_MONEY_AND_PRECISION.md",
+    "DO_ZERO_AO_PRECISO.md",
+    "FROM_ZERO_TO_PRECISION.md"
   ],
   "exports": {
     ".": {
