@@ -52,11 +52,14 @@ jobs:
           cache-dependency-path: pnpm-lock.yaml
 
       - run: pnpm install --frozen-lockfile
-      - run: pnpm -C packages/precise-money vitest run --coverage
       - uses: actions/upload-artifact@v4
         with:
           name: coverage-lcov
           path: packages/precise-money/coverage/lcov.info
+
+      - name: Test (coverage)
+        working-directory: packages/precise-money
+        run: pnpm exec vitest run --coverage
 
       - name: Publish to npm
         working-directory: packages/precise-money
