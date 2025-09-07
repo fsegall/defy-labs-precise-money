@@ -1,6 +1,6 @@
 {
   "name": "precise-money",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Cross-chain decimal & units primitives for crypto/fiat with BigInt.",
   "license": "MIT",
   "type": "module",
