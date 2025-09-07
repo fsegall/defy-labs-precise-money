@@ -10,11 +10,26 @@ permissions:
   id-token: write  # necessário para --provenance
 
 jobs:
-  validate:
+  release:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Assert tag matches package version
+      
+      - uses: pnpm/action-setup@v3
+        with:
+          version: 9
+      
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          registry-url: 'https://registry.npmjs.org'
+          cache: 'pnpm'
+          cache-dependency-path: pnpm-lock.yaml
+      
+      - run: pnpm install --frozen-lockfile
+      
+      - name: Validate tag vs package & compute should_publish
+        id: meta
         working-directory: packages/precise-money
         run: |
           VERSION=$(node -p "require('./package.json').version")
@@ -24,45 +39,31 @@ jobs:
             echo "::error::Version ($VERSION) differs from tag ($TAG)."
             exit 1
           fi
-
-      - name: Skip if version already exists on npm
-        working-directory: packages/precise-money
-        run: |
-          VERSION=$(node -p "require('./package.json').version")
           if npm view precise-money@"$VERSION" version >/dev/null 2>&1; then
+            echo "should_publish=false" >> $GITHUB_OUTPUT
             echo "Version $VERSION already on npm. Skipping publish."
-            exit 0
+          else
+            echo "should_publish=true" >> $GITHUB_OUTPUT
           fi
 
-  publish:
-    runs-on: ubuntu-latest
-    concurrency: publish-precise-money
-    steps:
-      - uses: actions/checkout@v4
-
-      - uses: pnpm/action-setup@v3
-        with:
-          version: 9
-
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 20
-          registry-url: 'https://registry.npmjs.org'
-          cache: 'pnpm'
-          cache-dependency-path: pnpm-lock.yaml
-
-      - run: pnpm install --frozen-lockfile
-      - uses: actions/upload-artifact@v4
-        with:
-          name: coverage-lcov
-          path: packages/precise-money/coverage/lcov.info
-
       - name: Test (coverage)
+        if: steps.meta.outputs.should_publish == 'true'
         working-directory: packages/precise-money
         run: pnpm exec vitest run --coverage
 
+      - uses: actions/upload-artifact@v4
+        if: steps.meta.outputs.should_publish == 'true'
+        with:
+          name: coverage
+          path: |
+            packages/precise-money/coverage/lcov.info
+            packages/precise-money/coverage/**
+          if-no-files-found: warn
+
       - name: Publish to npm
+        if: steps.meta.outputs.should_publish == 'true'
         working-directory: packages/precise-money
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: npm publish --access public --provenance
+
