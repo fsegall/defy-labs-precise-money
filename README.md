@@ -1,6 +1,8 @@
 # Defy-labs/precise-money
-![npm](https://img.shields.io/npm/v/precise-money)
-![license](https://img.shields.io/badge/license-MIT-green)
+[![npm version](https://img.shields.io/npm/v/precise-money.svg)](https://www.npmjs.com/package/precise-money)
+[![CI](https://github.com/fsegall/defy-labs-precise-money/actions/workflows/release.yml/badge.svg)](https://github.com/fsegall/defy-labs-precise-money/actions/workflows/release.yml)
+[![license](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+
 
 Cross‑chain **decimal & units** primitives built on **BigInt**. Safely convert between 2/6/7/9/18 decimals, apply slippage, format values without floating point, and normalize assets via a tiny registry. Thin chain adapters included.
 

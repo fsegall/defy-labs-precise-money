@@ -10,6 +10,30 @@ permissions:
   id-token: write  # necessário para --provenance
 
 jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Assert tag matches package version
+        working-directory: packages/precise-money
+        run: |
+          VERSION=$(node -p "require('./package.json').version")
+          TAG="${GITHUB_REF_NAME#v}"
+          echo "Package version: $VERSION, Tag: $TAG"
+          if [ "$VERSION" != "$TAG" ]; then
+            echo "::error::Version ($VERSION) differs from tag ($TAG)."
+            exit 1
+          fi
+
+      - name: Skip if version already exists on npm
+        working-directory: packages/precise-money
+        run: |
+          VERSION=$(node -p "require('./package.json').version")
+          if npm view precise-money@"$VERSION" version >/dev/null 2>&1; then
+            echo "Version $VERSION already on npm. Skipping publish."
+            exit 0
+          fi
+
   publish:
     runs-on: ubuntu-latest
     concurrency: publish-precise-money
@@ -28,8 +52,11 @@ jobs:
           cache-dependency-path: pnpm-lock.yaml
 
       - run: pnpm install --frozen-lockfile
-      - run: pnpm -r --filter ./packages/precise-money... build
-      - run: pnpm -r --filter ./packages/precise-money... test
+      - run: pnpm -C packages/precise-money vitest run --coverage
+      - uses: actions/upload-artifact@v4
+        with:
+          name: coverage-lcov
+          path: packages/precise-money/coverage/lcov.info
 
       - name: Publish to npm
         working-directory: packages/precise-money
